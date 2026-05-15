@@ -21,8 +21,8 @@ MAX_INPUT_CHARS = 80_000
 
 
 def print_stats(result: CompressionResult) -> None:
-    orig_tokens = estimate_tokens(result.original_chars * " ")
-    comp_tokens = estimate_tokens(result.compressed_chars * " ")
+    orig_tokens = estimate_tokens(result.original_chars)
+    comp_tokens = estimate_tokens(result.compressed_chars)
 
     table = Table(box=None, pad_edge=False, show_header=False)
     table.add_column("metric", style="dim", width=22)
@@ -122,7 +122,7 @@ def main(inputfile: str | None, level: str, output: str | None,
     console.print()
     console.print(Rule("[dim]ctxpress[/dim]"))
     console.print(f"  [dim]Level:[/dim]    {level.upper()} — {config['description'][:60]}...")
-    console.print(f"  [dim]Input:[/dim]    {len(text):,} chars (~{estimate_tokens(text):,} tokens)")
+    console.print(f"  [dim]Input:[/dim]    {len(text):,} chars (~{estimate_tokens(len(text)):,} tokens)")
     console.print(f"  [dim]Target:[/dim]   ~{config['target_pct']}% of original")
     console.print(f"  [dim]Backend:[/dim]  {selected_backend}")
     console.print()

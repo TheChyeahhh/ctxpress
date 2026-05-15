@@ -86,6 +86,6 @@ Respond with ONLY the compressed text. No preamble, no explanation, no meta-comm
 {text}"""
 
 
-def estimate_tokens(text: str) -> int:
+def estimate_tokens(char_count: int) -> int:
     """Rough token estimate: ~4 chars per token."""
-    return max(1, len(text) // 4)
+    return max(1, char_count // 4)
